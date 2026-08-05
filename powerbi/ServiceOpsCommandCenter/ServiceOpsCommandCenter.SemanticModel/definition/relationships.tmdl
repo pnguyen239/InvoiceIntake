@@ -28,9 +28,11 @@ relationship FactStatusHistory_FactRequests
 	toColumn: Fact_ServiceRequests.RequestKey
 
 relationship FactStatusHistory_DimStatus
+	isActive: false
 	fromColumn: Fact_StatusHistory.Status
 	toColumn: Dim_Status.Status
 
 relationship FactStatusHistory_DimDate
+	isActive: false
 	fromColumn: Fact_StatusHistory.StatusDate
 	toColumn: Dim_Date.Date
