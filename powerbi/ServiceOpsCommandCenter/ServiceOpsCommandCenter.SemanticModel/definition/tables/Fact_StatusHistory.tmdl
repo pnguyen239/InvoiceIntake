@@ -1020,12 +1020,11 @@ table Fact_StatusHistory
 	measure 'Status Change Events' = COUNTROWS('Fact_StatusHistory')
 		formatString: #,0
 
-	measure 'Requests That Had a Hold' = ```
+	measure 'Requests That Had a Hold' =
 			CALCULATE(
 			    DISTINCTCOUNT('Fact_StatusHistory'[RequestKey]),
 			    'Fact_StatusHistory'[Status] = "On Hold"
 			)
-			```
 		formatString: #,0
 
 	annotation PBI_Id = Fact_StatusHistory

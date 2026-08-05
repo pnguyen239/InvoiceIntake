@@ -164,7 +164,7 @@ table Fact_ServiceRequests
 	column 'SLA Outcome'
 		dataType: string
 		summarizeBy: none
-		expression: ```
+		expression:
 				VAR IsComp = 'Fact_ServiceRequests'[Status] = "Completed"
 				VAR IsCanc = 'Fact_ServiceRequests'[Status] = "Cancelled"
 				VAR Met = IsComp && 'Fact_ServiceRequests'[CompletedDateTime] <= 'Fact_ServiceRequests'[SLADueDateTime]
@@ -182,7 +182,6 @@ table Fact_ServiceRequests
 				        AtRisk, "At Risk",
 				        "On Track"
 				    )
-				```
 
 	column AgingHours
 		dataType: double
@@ -194,7 +193,7 @@ table Fact_ServiceRequests
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: ```
+		expression:
 				IF(
 				    NOT 'Fact_ServiceRequests'[IsOpen],
 				    BLANK(),
@@ -207,13 +206,12 @@ table Fact_ServiceRequests
 				        5
 				    )
 				)
-				```
 
 	column AgingBucket
 		dataType: string
 		summarizeBy: none
 		sortByColumn: AgingBucketSort
-		expression: ```
+		expression:
 				IF(
 				    NOT 'Fact_ServiceRequests'[IsOpen],
 				    BLANK(),
@@ -226,7 +224,6 @@ table Fact_ServiceRequests
 				        "14+ Days"
 				    )
 				)
-				```
 
 	column IsUnassignedStage
 		dataType: boolean
@@ -541,14 +538,13 @@ table Fact_ServiceRequests
 	measure 'Average Hold Time (Hrs)' = DIVIDE(AVERAGE('Fact_ServiceRequests'[HoldMinutesTotal]), 60)
 		formatString: 0.0
 
-	measure 'Previous Period Requests' = ```
+	measure 'Previous Period Requests' =
 			VAR CurrentDates = DATESBETWEEN('Dim_Date'[Date], MIN('Dim_Date'[Date]), MAX('Dim_Date'[Date]))
 			VAR DayCount = COUNTROWS(CurrentDates)
 			VAR PeriodStart = MIN('Dim_Date'[Date]) - DayCount
 			VAR PeriodEnd = MIN('Dim_Date'[Date]) - 1
 			RETURN
 			    CALCULATE([Total Requests], DATESBETWEEN('Dim_Date'[Date], PeriodStart, PeriodEnd))
-			```
 		formatString: #,0
 
 	measure 'Period Variance' = [Total Requests] - [Previous Period Requests]
@@ -593,7 +589,7 @@ table Fact_ServiceRequests
 	measure 'YTD Resolution Time' = CALCULATE([Average Resolution Time (Hrs)], DATESYTD('Dim_Date'[Date]))
 		formatString: 0.0
 
-	measure 'Reporting Period Label' = ```
+	measure 'Reporting Period Label' =
 			VAR MinD = MIN('Dim_Date'[Date])
 			VAR MaxD = MAX('Dim_Date'[Date])
 			RETURN
@@ -602,6 +598,5 @@ table Fact_ServiceRequests
 			        FORMAT(MinD, "MMMM d, yyyy"),
 			        FORMAT(MinD, "MMMM yyyy") & " – " & FORMAT(MaxD, "MMMM yyyy")
 			    )
-			```
 
 	annotation PBI_Id = Fact_ServiceRequests
