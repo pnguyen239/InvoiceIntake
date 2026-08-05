@@ -1,10 +1,12 @@
 # DAX Measures Reference
 
-All measures live in the semantic model (`Fact_ServiceRequests` and `Fact_StatusHistory` tables in
-`ServiceOpsCommandCenter.SemanticModel/definition/tables/*.tmdl`). This document is the readable
-catalog: what each measure does and why. The TMDL files are the source of truth for exact syntax.
+> **Not implemented in the shipped model.** Per a later scope change, the semantic model in this package
+> is deliberately DAX-free (bare structural tables + built-in Count/Average aggregations only — see the
+> README's "What's intentionally NOT here" section). This document is kept as a **build guide**: the
+> measures and calculated columns below are what you'd add, and how, when you're ready to layer in real
+> SLA/aging/time-intelligence logic. Nothing on this page currently exists in the `.tmdl` files.
 
-Two calculated columns underpin most of this: `Fact_ServiceRequests[SLA Outcome]` (Met / Breached /
+Two calculated columns would underpin most of this: `Fact_ServiceRequests[SLA Outcome]` (Met / Breached /
 At Risk / On Track / Cancelled, evaluated live against `NOW()`) and `Fact_ServiceRequests[AgingBucket]`
 (0-1 Day / 1-3 Days / 3-7 Days / 7-14 Days / 14+ Days, for open items only).
 

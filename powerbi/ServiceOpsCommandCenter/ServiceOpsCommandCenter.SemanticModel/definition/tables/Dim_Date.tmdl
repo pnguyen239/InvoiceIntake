@@ -1,110 +1,98 @@
 table Dim_Date
-	lineageTag: 51d2000e-c8d6-4ae4-87a6-fbda953f8997
+	lineageTag: 4a6c9b1e-2f3a-4d7e-9b6a-1c8d5e0f2a3b
 
 	column Date
-		lineageTag: 8fb4e9a1-4e64-47ab-9b97-7c9cdd855d5d
+		lineageTag: 7e2d4f6a-8b1c-4a3d-9e5f-2c6a8b0d1e4f
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
 		isKey
 		sourceColumn: Date
 
-	column Year = YEAR([Date])
-		lineageTag: d4a1ff84-7dcb-47a4-867e-e5ff69f37a7c
+	column Year
+		lineageTag: 1b3c5d7e-9f0a-4b2c-8d4e-6f8a0b2c4d6e
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
+		sourceColumn: Year
 
-	column QuarterNum = QUARTER([Date])
-		lineageTag: a6a19a9f-791a-4658-9898-8d6fe75d2bab
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-
-	column Quarter = "Q" & QUARTER([Date]) & " " & YEAR([Date])
-		lineageTag: 1f9fcbf5-1a86-4160-a7f3-e46ddd7394ff
+	column Quarter
+		lineageTag: 2c4d6e8f-0a1b-4c3d-9e5f-7a9b1c3d5e7f
 		dataType: string
 		summarizeBy: none
-		sortByColumn: QuarterSort
+		sourceColumn: Quarter
 
-	column QuarterSort = YEAR([Date]) * 10 + QUARTER([Date])
-		lineageTag: 0b05add2-c4d1-4b57-a63e-1e9d2c085390
+	column QuarterSort
+		lineageTag: 3d5e7f9a-1b2c-4d4e-0f6a-8b0c2d4e6f80
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
+		sourceColumn: QuarterSort
 
-	column MonthNum = MONTH([Date])
-		lineageTag: 32269160-1b94-4e93-becc-08e041247d44
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-
-	column MonthName = FORMAT([Date], "MMMM")
-		lineageTag: 31c2bb01-bd9f-42ce-9331-d9bd385c1fbb
-		dataType: string
-		summarizeBy: none
-
-	column MonthShort = FORMAT([Date], "MMM")
-		lineageTag: ff4d52ee-825b-4a97-b8ce-fbbc820cd090
-		dataType: string
-		summarizeBy: none
-
-	column MonthYear = FORMAT([Date], "MMM YYYY")
-		lineageTag: 6936bd35-c36e-4f48-9ebb-1ebacb9cf2f5
+	column MonthName
+		lineageTag: 4e6f8a0b-2c3d-4e5f-1a7b-9c1d3e5f7a91
 		dataType: string
 		summarizeBy: none
 		sortByColumn: MonthYearSort
+		sourceColumn: MonthName
 
-	column MonthYearSort = YEAR([Date]) * 100 + MONTH([Date])
-		lineageTag: c904a9bb-3845-42d0-8ec0-d59c9aa61cd7
+	column MonthShort
+		lineageTag: 5f7a9b1c-3d4e-4f6a-2b8c-0d2e4f6a8ba2
+		dataType: string
+		summarizeBy: none
+		sortByColumn: MonthYearSort
+		sourceColumn: MonthShort
+
+	column MonthYear
+		lineageTag: 6a8b0c2d-4e5f-406a-3c9d-1e3f5a7b9cb3
+		dataType: string
+		summarizeBy: none
+		sortByColumn: MonthYearSort
+		sourceColumn: MonthYear
+
+	column MonthYearSort
+		lineageTag: 7b9c1d3e-5f60-417a-4d0e-2f406a8b0cc4
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
+		sourceColumn: MonthYearSort
 
-	column Day = DAY([Date])
-		lineageTag: d0a2f1e9-b548-41f4-a438-ad203a84bd32
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-
-	column DayName = FORMAT([Date], "dddd")
-		lineageTag: 4a6ba761-abec-43c5-923f-f593c69a4191
+	column DayName
+		lineageTag: 8c0d2e4f-6071-428b-5e1f-30517b9c1dd5
 		dataType: string
 		summarizeBy: none
 		sortByColumn: WeekdayNum
+		sourceColumn: DayName
 
-	column DayShort = FORMAT([Date], "ddd")
-		lineageTag: c6e2492f-6b6d-4032-87ec-6fab90447964
-		dataType: string
-		summarizeBy: none
-		sortByColumn: WeekdayNum
-
-	column WeekdayNum = WEEKDAY([Date], 2)
-		lineageTag: 553fabe5-3266-40ce-8b9c-7f66e8265c85
+	column WeekdayNum
+		lineageTag: 9d1e3f50-7182-439c-6f20-41628c0d2ee6
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
+		sourceColumn: WeekdayNum
 
-	column IsWeekend = WEEKDAY([Date], 2) >= 6
-		lineageTag: d7cd161a-8ef8-4213-889b-664c3f68ab76
-		dataType: boolean
-		summarizeBy: none
-
-	column IsCurrentMonth = YEAR([Date]) = YEAR(TODAY()) && MONTH([Date]) = MONTH(TODAY())
-		lineageTag: 1e86e014-6d5a-4bd2-a66c-e11d4f3fc440
-		dataType: boolean
-		summarizeBy: none
-
-	column IsCurrentYear = YEAR([Date]) = YEAR(TODAY())
-		lineageTag: 36fb574d-cdf3-41d1-88d7-75eb1ec4df42
-		dataType: boolean
-		summarizeBy: none
-
-	partition Dim_Date = calculated
-		lineageTag: bd589d75-5eae-45bd-a3a6-54f146b45e41
+	partition Dim_Date = m
+		lineageTag: 0e2f4061-8293-440d-7031-52739d1e3ff7
 		mode: import
 		source =
-				CALENDAR(DATE(2025,1,1), DATE(2027,12,31))
+				let
+				    StartDate = #date(2025, 1, 1),
+				    EndDate = #date(2027, 12, 31),
+				    DayCount = Duration.Days(EndDate - StartDate) + 1,
+				    Dates = List.Dates(StartDate, DayCount, #duration(1, 0, 0, 0)),
+				    Source = Table.FromList(Dates, Splitter.SplitByNothing(), {"Date"}),
+				    ChangedType = Table.TransformColumnTypes(Source, {{"Date", type date}}),
+				    AddYear = Table.AddColumn(ChangedType, "Year", each Date.Year([Date]), Int64.Type),
+				    AddQuarter = Table.AddColumn(AddYear, "Quarter", each "Q" & Text.From(Date.QuarterOfYear([Date])) & " " & Text.From(Date.Year([Date])), type text),
+				    AddQuarterSort = Table.AddColumn(AddQuarter, "QuarterSort", each Date.Year([Date]) * 10 + Date.QuarterOfYear([Date]), Int64.Type),
+				    AddMonthName = Table.AddColumn(AddQuarterSort, "MonthName", each Date.MonthName([Date]), type text),
+				    AddMonthShort = Table.AddColumn(AddMonthName, "MonthShort", each Text.Start(Date.MonthName([Date]), 3), type text),
+				    AddMonthYear = Table.AddColumn(AddMonthShort, "MonthYear", each Text.Start(Date.MonthName([Date]), 3) & " " & Text.From(Date.Year([Date])), type text),
+				    AddMonthYearSort = Table.AddColumn(AddMonthYear, "MonthYearSort", each Date.Year([Date]) * 100 + Date.Month([Date]), Int64.Type),
+				    AddDayName = Table.AddColumn(AddMonthYearSort, "DayName", each Date.DayOfWeekName([Date]), type text),
+				    AddWeekdayNum = Table.AddColumn(AddDayName, "WeekdayNum", each Date.DayOfWeek([Date], Day.Monday) + 1, Int64.Type),
+				    ChangedType2 = Table.TransformColumnTypes(AddWeekdayNum, {{"Date", type datetime}})
+				in
+				    ChangedType2
 
 	annotation PBI_Id = Dim_Date
-
