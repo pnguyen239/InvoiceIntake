@@ -1,38 +1,47 @@
 relationship FactRequests_DimRequestType
+	lineageTag: c14716e2-9d42-4f0f-9e26-ecbb590b699e
 	fromColumn: Fact_ServiceRequests.RequestType
 	toColumn: Dim_RequestType.RequestType
 
 relationship FactRequests_DimAssignee
+	lineageTag: 14710c75-95a6-4306-b092-448aa8680ccd
 	fromColumn: Fact_ServiceRequests.Assignee
 	toColumn: Dim_Assignee.AssigneeName
 
 relationship FactRequests_DimStatus
+	lineageTag: cacfe206-33f2-4275-9e5c-96860a965271
 	fromColumn: Fact_ServiceRequests.Status
 	toColumn: Dim_Status.Status
 
 relationship FactRequests_DimPriority
+	lineageTag: b18f99a8-9e70-4bd0-a7b9-3a56b7c00833
 	fromColumn: Fact_ServiceRequests.IsUrgent
 	toColumn: Dim_Priority.IsUrgent
 
 relationship FactRequests_DimDate
+	lineageTag: 6b66a6c8-0186-4217-89a9-3b1095cd49b3
 	fromColumn: Fact_ServiceRequests.CreatedDate
 	toColumn: Dim_Date.Date
 
 relationship FactRequests_DimDate_Completed
+	lineageTag: a67b58b3-9d33-4b68-aa01-142bfdb08919
 	isActive: false
 	fromColumn: Fact_ServiceRequests.CompletedDate
 	toColumn: Dim_Date.Date
 
 relationship FactStatusHistory_FactRequests
+	lineageTag: 48b6403e-7a79-4b43-a8ea-3e72b2339ebb
 	fromColumn: Fact_StatusHistory.RequestKey
 	toColumn: Fact_ServiceRequests.RequestKey
 
 relationship FactStatusHistory_DimStatus
+	lineageTag: 1ca71dff-4d77-4087-9603-3598192fb11e
 	isActive: false
 	fromColumn: Fact_StatusHistory.Status
 	toColumn: Dim_Status.Status
 
 relationship FactStatusHistory_DimDate
+	lineageTag: d32c53ff-f68d-4627-8180-4817a1ddefd1
 	isActive: false
 	fromColumn: Fact_StatusHistory.StatusDate
 	toColumn: Dim_Date.Date

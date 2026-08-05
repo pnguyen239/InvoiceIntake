@@ -1,18 +1,22 @@
 table Dim_RequestType
+	lineageTag: 88b76f7e-5247-4e36-931d-c47fdcf50f99
 
 	column RequestType
+		lineageTag: 4c28f525-9c25-4a58-991b-dcee630710b0
 		dataType: string
 		summarizeBy: none
 		isKey
 		sourceColumn: RequestType
 
 	column RequestTypeSort
+		lineageTag: 041f81ee-66c3-4240-9ab1-9396be14fcda
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
 		sourceColumn: RequestTypeSort
 
 	partition Dim_RequestType = m
+		lineageTag: 27e33eaa-c79c-45d1-9dbd-c95840c0ff7d
 		mode: import
 		source =
 				let

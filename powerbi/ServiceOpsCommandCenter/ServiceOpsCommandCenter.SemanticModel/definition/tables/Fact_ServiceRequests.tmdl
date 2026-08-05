@@ -1,6 +1,8 @@
 table Fact_ServiceRequests
+	lineageTag: 36f604ac-b796-4523-bba2-231c1f39371b
 
 	column RequestKey
+		lineageTag: df0d6a02-db56-4b5f-bc28-4d8325a9ccb0
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
@@ -8,153 +10,181 @@ table Fact_ServiceRequests
 		sourceColumn: RequestKey
 
 	column ReadableID
+		lineageTag: 7e970612-faf3-4fb5-9ccd-f6622757c487
 		dataType: string
 		summarizeBy: none
 		sourceColumn: ReadableID
 
 	column Title
+		lineageTag: a3c177a7-4cf6-4109-be35-7ccc8635f157
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Title
 
 	column ShortDescription
+		lineageTag: 95d76b2c-c30a-4b9b-a980-1390f2d020c0
 		dataType: string
 		summarizeBy: none
 		sourceColumn: ShortDescription
 
 	column Requestor
+		lineageTag: fd39feef-30c5-4b35-8c50-d74c1a0e5cbd
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Requestor
 
 	column RequestType
+		lineageTag: d814046b-3f63-4ecf-866a-cce5f75c25c4
 		dataType: string
 		summarizeBy: none
 		sourceColumn: RequestType
 
 	column Assignee
+		lineageTag: 90498883-7c1d-4f0f-a87b-d1c831223b76
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Assignee
 
 	column CreatedDateTime
+		lineageTag: cbf343ae-d484-40ab-955d-424384a72653
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: CreatedDateTime
 
 	column CreatedByName
+		lineageTag: 97374685-4762-4bd1-b8ad-1cb3964d959f
 		dataType: string
 		summarizeBy: none
 		sourceColumn: CreatedByName
 
 	column Status
+		lineageTag: aa40a8b0-405c-416f-96de-f669a60bc795
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Status
 
 	column IsUrgent
+		lineageTag: c07a578f-55f5-4949-ae2d-7e39ed95bace
 		dataType: boolean
 		summarizeBy: none
 		sourceColumn: IsUrgent
 
 	column SLATargetHours
+		lineageTag: a50c8ce8-a5ff-478c-8a62-56ffd9c61325
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
 		sourceColumn: SLATargetHours
 
 	column SLADueDateTime
+		lineageTag: 92286d07-8ec7-4dc9-88d2-6dfb301c60c2
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: SLADueDateTime
 
 	column IsOpen
+		lineageTag: def770c7-b8f4-4541-a80e-a45fbe5716be
 		dataType: boolean
 		summarizeBy: none
 		sourceColumn: IsOpen
 
 	column IsDraft
+		lineageTag: a7f1a52e-3cd1-48db-bfb5-9eaa2b1f5941
 		dataType: boolean
 		summarizeBy: none
 		sourceColumn: IsDraft
 
 	column EditInProcess
+		lineageTag: fd33da10-6cb6-4f10-9638-b16f6a0cea90
 		dataType: boolean
 		summarizeBy: none
 		sourceColumn: EditInProcess
 
 	column EditorName
+		lineageTag: 964c0eb0-a297-462b-a7d1-f8f804f91aa6
 		dataType: string
 		summarizeBy: none
 		sourceColumn: EditorName
 
 	column EditTimestamp
+		lineageTag: 9038271c-afee-4830-8fe5-c0e40cb7a42c
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: EditTimestamp
 
 	column ModifiedDateTime
+		lineageTag: 18592ccf-f278-4008-98b3-52256cf33eb5
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: ModifiedDateTime
 
 	column ModifiedByName
+		lineageTag: 6d4a8a0b-a08a-49aa-ada0-967f9ee29bfd
 		dataType: string
 		summarizeBy: none
 		sourceColumn: ModifiedByName
 
 	column CompletedDateTime
+		lineageTag: 94659bb5-121f-4451-a934-1b6321ea6013
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: CompletedDateTime
 
 	column FirstAssignedDateTime
+		lineageTag: 720e29ac-4c4c-467a-ac27-731c5da7b445
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: FirstAssignedDateTime
 
 	column FirstInProgressDateTime
+		lineageTag: 0490746a-a9e9-470d-86b5-4bd5ada6c5e4
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: FirstInProgressDateTime
 
 	column HoldMinutesTotal
+		lineageTag: ec1c4a71-6715-42ec-8174-69a1dedec224
 		dataType: double
 		formatString: 0.00
 		summarizeBy: none
 		sourceColumn: HoldMinutesTotal
 
 	column TimeToStartHours
+		lineageTag: f290284c-a7a8-444c-8787-3edc39c00d84
 		dataType: double
 		formatString: 0.00
 		summarizeBy: none
 		sourceColumn: TimeToStartHours
 
 	column HandlingHours
+		lineageTag: 591dd4bf-a283-43da-a6b2-09b72f2696a8
 		dataType: double
 		formatString: 0.00
 		summarizeBy: none
 		sourceColumn: HandlingHours
 
 	column ResolutionHours
+		lineageTag: 6d71d5f6-69a6-4f80-a6c1-286a00f940c3
 		dataType: double
 		formatString: 0.00
 		summarizeBy: none
 		sourceColumn: ResolutionHours
 
 	column CreatedDate = DATE(YEAR([CreatedDateTime]), MONTH([CreatedDateTime]), DAY([CreatedDateTime]))
+		lineageTag: 2edbc984-076a-4928-b7cf-ae0090099c32
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
 
 	column CompletedDate = IF(ISBLANK('Fact_ServiceRequests'[CompletedDateTime]), BLANK(), DATE(YEAR([CompletedDateTime]), MONTH([CompletedDateTime]), DAY([CompletedDateTime])))
+		lineageTag: 9ccb2aff-2a30-4f43-b86c-73bc9b5ccf1e
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
@@ -177,10 +207,12 @@ table Fact_ServiceRequests
 				        AtRisk, "At Risk",
 				        "On Track"
 				    )
+		lineageTag: 76a65534-eb6f-4aa3-a827-5933f65a5c51
 		dataType: string
 		summarizeBy: none
 
 	column AgingHours = IF('Fact_ServiceRequests'[IsOpen], DATEDIFF('Fact_ServiceRequests'[CreatedDateTime], NOW(), MINUTE) / 60, BLANK())
+		lineageTag: c727205b-d788-427e-9c56-c9a20ca0e087
 		dataType: double
 		formatString: 0.0
 		summarizeBy: none
@@ -198,6 +230,7 @@ table Fact_ServiceRequests
 				        5
 				    )
 				)
+		lineageTag: a650acca-a173-408d-ac5a-8c23913aa953
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
@@ -215,15 +248,18 @@ table Fact_ServiceRequests
 				        "14+ Days"
 				    )
 				)
+		lineageTag: 260c0d58-f37d-4e9c-8c94-d4d180a0e871
 		dataType: string
 		summarizeBy: none
 		sortByColumn: AgingBucketSort
 
 	column IsUnassignedStage = 'Fact_ServiceRequests'[Status] = "New" || 'Fact_ServiceRequests'[Status] = "Assigned"
+		lineageTag: 99b36275-b8e3-4c98-aa09-4459d7fb540a
 		dataType: boolean
 		summarizeBy: none
 
 	partition Fact_ServiceRequests = m
+		lineageTag: 97f0e3e8-f7ba-4c3a-b51d-ffeef253e693
 		mode: import
 		source =
 				let
@@ -478,57 +514,75 @@ table Fact_ServiceRequests
 
 
 	measure 'Total Requests' = COUNTROWS('Fact_ServiceRequests')
+		lineageTag: ce7a549c-4d7f-4a0f-8416-96b6d2d0cbb2
 		formatString: #,0
 
 	measure 'Open Requests' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[IsOpen] = TRUE)
+		lineageTag: a1388b1c-b24b-4428-b890-17be118a1f70
 		formatString: #,0
 
 	measure 'Completed Requests' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[Status] = "Completed")
+		lineageTag: 14500bc7-bfab-4960-aff6-764dc5aece01
 		formatString: #,0
 
 	measure 'Cancelled Requests' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[Status] = "Cancelled")
+		lineageTag: 1743b59c-8c7f-4d19-9b1d-57c774f13a0f
 		formatString: #,0
 
 	measure 'Backlog Volume' = [Open Requests]
+		lineageTag: 8c3ce2c6-4513-4b71-b03e-c846b4033575
 		formatString: #,0
 
 	measure 'Unassigned Requests' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[IsUnassignedStage] = TRUE)
+		lineageTag: c27da6dd-ac63-4902-b40e-823320ae6cfe
 		formatString: #,0
 
 	measure 'Open Over 3 Days' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[IsOpen] = TRUE, 'Fact_ServiceRequests'[AgingHours] > 72)
+		lineageTag: 24e0df34-e3d4-407d-992a-96a1de729399
 		formatString: #,0
 
 	measure 'Cancellation Rate' = DIVIDE([Cancelled Requests], [Total Requests])
+		lineageTag: 733c8d2f-940d-4271-b3cb-9e219ad514ea
 		formatString: 0.0%
 
 	measure 'Resolved Requests (Completed Date)' = CALCULATE([Completed Requests], USERELATIONSHIP('Fact_ServiceRequests'[CompletedDate], 'Dim_Date'[Date]))
+		lineageTag: 059f97a9-e2eb-48e8-8e1a-881585d427fb
 		formatString: #,0
 
 	measure 'SLA Met' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[SLA Outcome] = "Met")
+		lineageTag: c324909a-5d5d-4bbc-ad2f-01bc77b3fdff
 		formatString: #,0
 
 	measure 'SLA Breached' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[SLA Outcome] = "Breached")
+		lineageTag: f8b1cbde-01c7-47bd-a20a-26b4207da8a9
 		formatString: #,0
 
 	measure 'SLA At Risk' = CALCULATE([Total Requests], 'Fact_ServiceRequests'[SLA Outcome] = "At Risk")
+		lineageTag: 29f9331f-6298-4e94-9105-e0ce725398cd
 		formatString: #,0
 
 	measure 'SLA Compliance %' = DIVIDE([SLA Met], [Completed Requests])
+		lineageTag: e7ff0dbd-054e-4f22-a0e6-f451a912f9ee
 		formatString: 0.0%
 
 	measure 'SLA Target %' = 0.90
+		lineageTag: ef1828a7-62b7-482b-bd8d-3a44dba8e0c4
 		formatString: 0%
 
 	measure 'Average Resolution Time (Hrs)' = AVERAGE('Fact_ServiceRequests'[ResolutionHours])
+		lineageTag: cb988191-842a-4f1d-946b-5d2e53993233
 		formatString: 0.0
 
 	measure 'Average Time to Start (Hrs)' = AVERAGE('Fact_ServiceRequests'[TimeToStartHours])
+		lineageTag: 78b58202-6e5e-41b4-bcd5-f70221ccc7d1
 		formatString: 0.0
 
 	measure 'Average Handling Time (Hrs)' = AVERAGE('Fact_ServiceRequests'[HandlingHours])
+		lineageTag: 9bf32a02-5691-4af4-8652-0c72d049a6bd
 		formatString: 0.0
 
 	measure 'Average Hold Time (Hrs)' = DIVIDE(AVERAGE('Fact_ServiceRequests'[HoldMinutesTotal]), 60)
+		lineageTag: 54f985a5-8c90-4e68-8222-70971c389681
 		formatString: 0.0
 
 	measure 'Previous Period Requests' =
@@ -538,48 +592,63 @@ table Fact_ServiceRequests
 			VAR PeriodEnd = MIN('Dim_Date'[Date]) - 1
 			RETURN
 			    CALCULATE([Total Requests], DATESBETWEEN('Dim_Date'[Date], PeriodStart, PeriodEnd))
+		lineageTag: 7b8c8ba7-0d56-41d6-8b8a-ceb9c3debcd2
 		formatString: #,0
 
 	measure 'Period Variance' = [Total Requests] - [Previous Period Requests]
+		lineageTag: 8e15b47c-2814-460c-a156-40d0f2c3a395
 		formatString: +#,0;-#,0;0
 
 	measure 'Period Variance %' = DIVIDE([Period Variance], [Previous Period Requests])
+		lineageTag: 53e75e53-9958-4366-9af5-16c526ca4ab5
 		formatString: +0.0%;-0.0%;0%
 
 	measure 'Requests PM' = CALCULATE([Total Requests], DATEADD('Dim_Date'[Date], -1, MONTH))
+		lineageTag: c255e185-1eac-4b54-aa22-bcfb26ac050e
 		formatString: #,0
 
 	measure 'MoM Change %' = DIVIDE([Total Requests] - [Requests PM], [Requests PM])
+		lineageTag: e0113665-42f2-4b7e-8bf7-f21920f76d66
 		formatString: +0.0%;-0.0%;0%
 
 	measure 'Requests PQ' = CALCULATE([Total Requests], DATEADD('Dim_Date'[Date], -1, QUARTER))
+		lineageTag: 37b75efc-cbc3-4ec9-811c-f9334700079e
 		formatString: #,0
 
 	measure 'QoQ Change %' = DIVIDE([Total Requests] - [Requests PQ], [Requests PQ])
+		lineageTag: e814e2ce-80ff-43f2-a3d0-ca811f5ff8e7
 		formatString: +0.0%;-0.0%;0%
 
 	measure 'Requests PY' = CALCULATE([Total Requests], SAMEPERIODLASTYEAR('Dim_Date'[Date]))
+		lineageTag: 7543ff79-52d2-4d2a-a03e-4d43b949f457
 		formatString: #,0
 
 	measure 'YoY Change %' = DIVIDE([Total Requests] - [Requests PY], [Requests PY])
+		lineageTag: 003b17da-c878-46c4-b108-e5ea9656b693
 		formatString: +0.0%;-0.0%;0%
 
 	measure 'Rolling 3 Month Volume' = CALCULATE([Total Requests], DATESINPERIOD('Dim_Date'[Date], MAX('Dim_Date'[Date]), -3, MONTH))
+		lineageTag: dd1cb2c0-fe06-4dd1-9493-7563530e1f5d
 		formatString: #,0
 
 	measure 'Rolling 6 Month Volume' = CALCULATE([Total Requests], DATESINPERIOD('Dim_Date'[Date], MAX('Dim_Date'[Date]), -6, MONTH))
+		lineageTag: ef9859a2-4ed2-470c-9b3f-6e3a7d90c81b
 		formatString: #,0
 
 	measure 'Rolling 12 Month Volume' = CALCULATE([Total Requests], DATESINPERIOD('Dim_Date'[Date], MAX('Dim_Date'[Date]), -12, MONTH))
+		lineageTag: 903e56ab-29fb-473f-8959-cee1ada04f17
 		formatString: #,0
 
 	measure 'YTD Requests' = TOTALYTD([Total Requests], 'Dim_Date'[Date])
+		lineageTag: eea8ef49-46db-4c7d-8f71-83a85c443cd2
 		formatString: #,0
 
 	measure 'YTD SLA Compliance' = CALCULATE([SLA Compliance %], DATESYTD('Dim_Date'[Date]))
+		lineageTag: a7268a67-cc2e-4478-982c-41816cee6158
 		formatString: 0.0%
 
 	measure 'YTD Resolution Time' = CALCULATE([Average Resolution Time (Hrs)], DATESYTD('Dim_Date'[Date]))
+		lineageTag: f83ccc21-1d22-4d4f-ab4b-fd5fd0ae20af
 		formatString: 0.0
 
 	measure 'Reporting Period Label' =
@@ -593,3 +662,5 @@ table Fact_ServiceRequests
 			    )
 
 	annotation PBI_Id = Fact_ServiceRequests
+
+		lineageTag: 0ad7f949-1124-4087-b9aa-3cb4abc7d566

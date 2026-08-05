@@ -1,29 +1,35 @@
 table Dim_Priority
+	lineageTag: 5384b2bc-c882-4f34-bfe1-4ca33abe23de
 
 	column IsUrgent
+		lineageTag: dabee1d5-4438-4470-b289-d4d64ba23d3c
 		dataType: boolean
 		summarizeBy: none
 		isKey
 		sourceColumn: IsUrgent
 
 	column PriorityName
+		lineageTag: 7a5990f6-b67a-4694-973b-0d2686297344
 		dataType: string
 		summarizeBy: none
 		sourceColumn: PriorityName
 
 	column SLATargetHours
+		lineageTag: 1833b823-e48b-430d-a671-c6695f011dac
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
 		sourceColumn: SLATargetHours
 
 	column PriorityOrder
+		lineageTag: e94b70d7-b9bd-4217-8e3e-484dfe5cae40
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
 		sourceColumn: PriorityOrder
 
 	partition Dim_Priority = m
+		lineageTag: 44799a5f-1976-4c93-a6db-a89a59ffb7f8
 		mode: import
 		source =
 				let

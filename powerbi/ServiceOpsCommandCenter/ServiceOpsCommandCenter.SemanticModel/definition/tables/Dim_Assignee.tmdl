@@ -1,17 +1,21 @@
 table Dim_Assignee
+	lineageTag: e8a70471-b782-4acf-981a-8254db817745
 
 	column AssigneeName
+		lineageTag: 6f314d6a-aad4-4189-894d-c1bf24560221
 		dataType: string
 		summarizeBy: none
 		isKey
 		sourceColumn: AssigneeName
 
 	column Team
+		lineageTag: 9d24a906-532f-4b65-bc69-e171104bd80f
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Team
 
 	partition Dim_Assignee = m
+		lineageTag: 6d228887-806d-425c-a9dc-c2341358ce15
 		mode: import
 		source =
 				let

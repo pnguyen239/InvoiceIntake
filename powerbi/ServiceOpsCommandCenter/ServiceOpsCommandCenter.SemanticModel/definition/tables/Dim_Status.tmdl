@@ -1,28 +1,34 @@
 table Dim_Status
+	lineageTag: 4194f342-3851-4fdc-8cb6-ca0bbcda78e5
 
 	column Status
+		lineageTag: 74a57202-10bf-4fdf-8dff-bb8a2aca07fa
 		dataType: string
 		summarizeBy: none
 		isKey
 		sourceColumn: Status
 
 	column StatusOrder
+		lineageTag: d7567a16-8a4c-4d9c-a678-bad11828f6cb
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
 		sourceColumn: StatusOrder
 
 	column StatusStage
+		lineageTag: 15a29350-172e-4799-8df9-83763bc88e2c
 		dataType: string
 		summarizeBy: none
 		sourceColumn: StatusStage
 
 	column StatusColorHex
+		lineageTag: 1de890f0-7faa-4d29-b5f4-cf0f58bfc6fe
 		dataType: string
 		summarizeBy: none
 		sourceColumn: StatusColorHex
 
 	partition Dim_Status = m
+		lineageTag: d474d4f1-accc-40ec-9e73-65e5a62d1da1
 		mode: import
 		source =
 				let

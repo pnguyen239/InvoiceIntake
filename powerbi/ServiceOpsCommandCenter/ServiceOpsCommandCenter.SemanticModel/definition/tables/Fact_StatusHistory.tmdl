@@ -1,6 +1,8 @@
 table Fact_StatusHistory
+	lineageTag: 26c0d681-7209-41ef-b8a3-7d7b5df4805b
 
 	column StatusHistoryKey
+		lineageTag: 47276b85-3983-47ee-89f5-c5f6b5868a97
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
@@ -8,28 +10,33 @@ table Fact_StatusHistory
 		sourceColumn: StatusHistoryKey
 
 	column RequestKey
+		lineageTag: ae799563-6490-42b8-952a-1ee2ab57f3ed
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
 		sourceColumn: RequestKey
 
 	column Status
+		lineageTag: 21a2085e-b6ae-4132-a37f-26e0a74abf79
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Status
 
 	column StatusTimestamp
+		lineageTag: 8db3043a-ab2b-43a2-ae0a-61e5b897aab8
 		dataType: dateTime
 		formatString: General Date
 		summarizeBy: none
 		sourceColumn: StatusTimestamp
 
 	column StatusDate = DATE(YEAR([StatusTimestamp]), MONTH([StatusTimestamp]), DAY([StatusTimestamp]))
+		lineageTag: 7faf996c-3d09-407b-87b0-323465756629
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
 
 	partition Fact_StatusHistory = m
+		lineageTag: 7c45b5c5-742c-45db-b1eb-3729e21abf47
 		mode: import
 		source =
 				let
@@ -1017,6 +1024,7 @@ table Fact_StatusHistory
 				    Source
 
 	measure 'Status Change Events' = COUNTROWS('Fact_StatusHistory')
+		lineageTag: 89aea291-d5e0-4710-96ec-b3e0d9ef3120
 		formatString: #,0
 
 	measure 'Requests That Had a Hold' =
@@ -1024,6 +1032,7 @@ table Fact_StatusHistory
 			    DISTINCTCOUNT('Fact_StatusHistory'[RequestKey]),
 			    'Fact_StatusHistory'[Status] = "On Hold"
 			)
+		lineageTag: 26221dda-f48e-4429-95cc-ca48205d6e3d
 		formatString: #,0
 
 	annotation PBI_Id = Fact_StatusHistory
