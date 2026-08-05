@@ -7,96 +7,80 @@ table Dim_Date
 		isKey
 		sourceColumn: Date
 
-	column Year
+	column Year = YEAR([Date])
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: YEAR([Date])
 
-	column QuarterNum
+	column QuarterNum = QUARTER([Date])
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: QUARTER([Date])
 
-	column Quarter
+	column Quarter = "Q" & QUARTER([Date]) & " " & YEAR([Date])
 		dataType: string
 		summarizeBy: none
 		sortByColumn: QuarterSort
-		expression: "Q" & QUARTER([Date]) & " " & YEAR([Date])
 
-	column QuarterSort
+	column QuarterSort = YEAR([Date]) * 10 + QUARTER([Date])
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: YEAR([Date]) * 10 + QUARTER([Date])
 
-	column MonthNum
+	column MonthNum = MONTH([Date])
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: MONTH([Date])
 
-	column MonthName
+	column MonthName = FORMAT([Date], "MMMM")
 		dataType: string
 		summarizeBy: none
-		expression: FORMAT([Date], "MMMM")
 
-	column MonthShort
+	column MonthShort = FORMAT([Date], "MMM")
 		dataType: string
 		summarizeBy: none
-		expression: FORMAT([Date], "MMM")
 
-	column MonthYear
+	column MonthYear = FORMAT([Date], "MMM YYYY")
 		dataType: string
 		summarizeBy: none
 		sortByColumn: MonthYearSort
-		expression: FORMAT([Date], "MMM YYYY")
 
-	column MonthYearSort
+	column MonthYearSort = YEAR([Date]) * 100 + MONTH([Date])
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: YEAR([Date]) * 100 + MONTH([Date])
 
-	column Day
+	column Day = DAY([Date])
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: DAY([Date])
 
-	column DayName
+	column DayName = FORMAT([Date], "dddd")
 		dataType: string
 		summarizeBy: none
 		sortByColumn: WeekdayNum
-		expression: FORMAT([Date], "dddd")
 
-	column DayShort
+	column DayShort = FORMAT([Date], "ddd")
 		dataType: string
 		summarizeBy: none
 		sortByColumn: WeekdayNum
-		expression: FORMAT([Date], "ddd")
 
-	column WeekdayNum
+	column WeekdayNum = WEEKDAY([Date], 2)
 		dataType: int64
 		formatString: 0
 		summarizeBy: none
-		expression: WEEKDAY([Date], 2)
 
-	column IsWeekend
+	column IsWeekend = WEEKDAY([Date], 2) >= 6
 		dataType: boolean
 		summarizeBy: none
-		expression: WEEKDAY([Date], 2) >= 6
 
-	column IsCurrentMonth
+	column IsCurrentMonth = YEAR([Date]) = YEAR(TODAY()) && MONTH([Date]) = MONTH(TODAY())
 		dataType: boolean
 		summarizeBy: none
-		expression: YEAR([Date]) = YEAR(TODAY()) && MONTH([Date]) = MONTH(TODAY())
 
-	column IsCurrentYear
+	column IsCurrentYear = YEAR([Date]) = YEAR(TODAY())
 		dataType: boolean
 		summarizeBy: none
-		expression: YEAR([Date]) = YEAR(TODAY())
 
 	partition Dim_Date = calculated
 		mode: import

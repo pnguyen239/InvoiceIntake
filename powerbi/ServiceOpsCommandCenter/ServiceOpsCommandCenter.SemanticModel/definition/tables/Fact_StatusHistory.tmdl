@@ -24,11 +24,10 @@ table Fact_StatusHistory
 		summarizeBy: none
 		sourceColumn: StatusTimestamp
 
-	column StatusDate
+	column StatusDate = DATE(YEAR([StatusTimestamp]), MONTH([StatusTimestamp]), DAY([StatusTimestamp]))
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
-		expression: DATE(YEAR([StatusTimestamp]), MONTH([StatusTimestamp]), DAY([StatusTimestamp]))
 
 	partition Fact_StatusHistory = m
 		mode: import

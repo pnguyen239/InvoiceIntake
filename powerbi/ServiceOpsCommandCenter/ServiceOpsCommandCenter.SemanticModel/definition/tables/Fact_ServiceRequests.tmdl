@@ -149,22 +149,17 @@ table Fact_ServiceRequests
 		summarizeBy: none
 		sourceColumn: ResolutionHours
 
-	column CreatedDate
+	column CreatedDate = DATE(YEAR([CreatedDateTime]), MONTH([CreatedDateTime]), DAY([CreatedDateTime]))
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
-		expression: DATE(YEAR([CreatedDateTime]), MONTH([CreatedDateTime]), DAY([CreatedDateTime]))
 
-	column CompletedDate
+	column CompletedDate = IF(ISBLANK('Fact_ServiceRequests'[CompletedDateTime]), BLANK(), DATE(YEAR([CompletedDateTime]), MONTH([CompletedDateTime]), DAY([CompletedDateTime])))
 		dataType: dateTime
 		formatString: Short Date
 		summarizeBy: none
-		expression: IF(ISBLANK('Fact_ServiceRequests'[CompletedDateTime]), BLANK(), DATE(YEAR([CompletedDateTime]), MONTH([CompletedDateTime]), DAY([CompletedDateTime])))
 
-	column 'SLA Outcome'
-		dataType: string
-		summarizeBy: none
-		expression:
+	column 'SLA Outcome' =
 				VAR IsComp = 'Fact_ServiceRequests'[Status] = "Completed"
 				VAR IsCanc = 'Fact_ServiceRequests'[Status] = "Cancelled"
 				VAR Met = IsComp && 'Fact_ServiceRequests'[CompletedDateTime] <= 'Fact_ServiceRequests'[SLADueDateTime]
@@ -182,18 +177,15 @@ table Fact_ServiceRequests
 				        AtRisk, "At Risk",
 				        "On Track"
 				    )
+		dataType: string
+		summarizeBy: none
 
-	column AgingHours
+	column AgingHours = IF('Fact_ServiceRequests'[IsOpen], DATEDIFF('Fact_ServiceRequests'[CreatedDateTime], NOW(), MINUTE) / 60, BLANK())
 		dataType: double
 		formatString: 0.0
 		summarizeBy: none
-		expression: IF('Fact_ServiceRequests'[IsOpen], DATEDIFF('Fact_ServiceRequests'[CreatedDateTime], NOW(), MINUTE) / 60, BLANK())
 
-	column AgingBucketSort
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-		expression:
+	column AgingBucketSort =
 				IF(
 				    NOT 'Fact_ServiceRequests'[IsOpen],
 				    BLANK(),
@@ -206,12 +198,11 @@ table Fact_ServiceRequests
 				        5
 				    )
 				)
-
-	column AgingBucket
-		dataType: string
+		dataType: int64
+		formatString: 0
 		summarizeBy: none
-		sortByColumn: AgingBucketSort
-		expression:
+
+	column AgingBucket =
 				IF(
 				    NOT 'Fact_ServiceRequests'[IsOpen],
 				    BLANK(),
@@ -224,11 +215,13 @@ table Fact_ServiceRequests
 				        "14+ Days"
 				    )
 				)
+		dataType: string
+		summarizeBy: none
+		sortByColumn: AgingBucketSort
 
-	column IsUnassignedStage
+	column IsUnassignedStage = 'Fact_ServiceRequests'[Status] = "New" || 'Fact_ServiceRequests'[Status] = "Assigned"
 		dataType: boolean
 		summarizeBy: none
-		expression: 'Fact_ServiceRequests'[Status] = "New" || 'Fact_ServiceRequests'[Status] = "Assigned"
 
 	partition Fact_ServiceRequests = m
 		mode: import
