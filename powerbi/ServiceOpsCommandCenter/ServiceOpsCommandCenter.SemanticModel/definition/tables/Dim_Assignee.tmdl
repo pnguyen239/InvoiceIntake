@@ -1,0 +1,34 @@
+table Dim_Assignee
+
+	column AssigneeName
+		dataType: string
+		summarizeBy: none
+		isKey
+		sourceColumn: AssigneeName
+
+	column Team
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Team
+
+	partition Dim_Assignee = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        {"AssigneeName", "Team"},
+				        {
+				            {"Darren Carlson", "Service Ops"},
+				            {"Phoebe Nguyen", "Service Ops"},
+				            {"Donald Wren", "Service Ops"},
+				            {"Joshua Norman", "Service Ops"},
+				            {"Rinkesh Patel", "Service Ops"},
+				            {"Jerad Hofmeister", "Service Ops"},
+				            {"Todd Daniels", "Service Ops"}
+				        }
+				    )
+				in
+				    Source
+
+	annotation PBI_Id = Dim_Assignee
+

@@ -1,0 +1,33 @@
+table Dim_RequestType
+
+	column RequestType
+		dataType: string
+		summarizeBy: none
+		isKey
+		sourceColumn: RequestType
+
+	column RequestTypeSort
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: RequestTypeSort
+
+	partition Dim_RequestType = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        {"RequestType", "RequestTypeSort"},
+				        {
+				            {"Invoice Request", 1},
+				            {"Goods Receipt Request", 2},
+				            {"ServiceNow Request", 3},
+				            {"Service Request", 4},
+				            {"Sales Event Request", 5}
+				        }
+				    )
+				in
+				    Source
+
+	annotation PBI_Id = Dim_RequestType
+

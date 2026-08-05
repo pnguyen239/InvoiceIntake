@@ -1,0 +1,41 @@
+table Dim_Priority
+
+	column IsUrgent
+		dataType: boolean
+		summarizeBy: none
+		isKey
+		sourceColumn: IsUrgent
+
+	column PriorityName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PriorityName
+
+	column SLATargetHours
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: SLATargetHours
+
+	column PriorityOrder
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PriorityOrder
+
+	partition Dim_Priority = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        {"IsUrgent", "PriorityName", "SLATargetHours", "PriorityOrder"},
+				        {
+				            {true, "Urgent", 6, 1},
+				            {false, "Normal", 16, 2}
+				        }
+				    )
+				in
+				    Source
+
+	annotation PBI_Id = Dim_Priority
+

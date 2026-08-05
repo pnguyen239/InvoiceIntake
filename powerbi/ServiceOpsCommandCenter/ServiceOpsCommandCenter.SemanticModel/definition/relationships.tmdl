@@ -1,0 +1,36 @@
+relationship FactRequests_DimRequestType
+	fromColumn: Fact_ServiceRequests.RequestType
+	toColumn: Dim_RequestType.RequestType
+
+relationship FactRequests_DimAssignee
+	fromColumn: Fact_ServiceRequests.Assignee
+	toColumn: Dim_Assignee.AssigneeName
+
+relationship FactRequests_DimStatus
+	fromColumn: Fact_ServiceRequests.Status
+	toColumn: Dim_Status.Status
+
+relationship FactRequests_DimPriority
+	fromColumn: Fact_ServiceRequests.IsUrgent
+	toColumn: Dim_Priority.IsUrgent
+
+relationship FactRequests_DimDate
+	fromColumn: Fact_ServiceRequests.CreatedDate
+	toColumn: Dim_Date.Date
+
+relationship FactRequests_DimDate_Completed
+	isActive: false
+	fromColumn: Fact_ServiceRequests.CompletedDate
+	toColumn: Dim_Date.Date
+
+relationship FactStatusHistory_FactRequests
+	fromColumn: Fact_StatusHistory.RequestKey
+	toColumn: Fact_ServiceRequests.RequestKey
+
+relationship FactStatusHistory_DimStatus
+	fromColumn: Fact_StatusHistory.Status
+	toColumn: Dim_Status.Status
+
+relationship FactStatusHistory_DimDate
+	fromColumn: Fact_StatusHistory.StatusDate
+	toColumn: Dim_Date.Date

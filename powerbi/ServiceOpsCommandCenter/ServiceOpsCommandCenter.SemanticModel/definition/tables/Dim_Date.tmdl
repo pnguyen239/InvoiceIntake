@@ -1,0 +1,107 @@
+table Dim_Date
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		isKey
+		sourceColumn: Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: YEAR([Date])
+
+	column QuarterNum
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: QUARTER([Date])
+
+	column Quarter
+		dataType: string
+		summarizeBy: none
+		sortByColumn: QuarterSort
+		expression: "Q" & QUARTER([Date]) & " " & YEAR([Date])
+
+	column QuarterSort
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: YEAR([Date]) * 10 + QUARTER([Date])
+
+	column MonthNum
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: MONTH([Date])
+
+	column MonthName
+		dataType: string
+		summarizeBy: none
+		expression: FORMAT([Date], "MMMM")
+
+	column MonthShort
+		dataType: string
+		summarizeBy: none
+		expression: FORMAT([Date], "MMM")
+
+	column MonthYear
+		dataType: string
+		summarizeBy: none
+		sortByColumn: MonthYearSort
+		expression: FORMAT([Date], "MMM YYYY")
+
+	column MonthYearSort
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: YEAR([Date]) * 100 + MONTH([Date])
+
+	column Day
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: DAY([Date])
+
+	column DayName
+		dataType: string
+		summarizeBy: none
+		sortByColumn: WeekdayNum
+		expression: FORMAT([Date], "dddd")
+
+	column DayShort
+		dataType: string
+		summarizeBy: none
+		sortByColumn: WeekdayNum
+		expression: FORMAT([Date], "ddd")
+
+	column WeekdayNum
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		expression: WEEKDAY([Date], 2)
+
+	column IsWeekend
+		dataType: boolean
+		summarizeBy: none
+		expression: WEEKDAY([Date], 2) >= 6
+
+	column IsCurrentMonth
+		dataType: boolean
+		summarizeBy: none
+		expression: YEAR([Date]) = YEAR(TODAY()) && MONTH([Date]) = MONTH(TODAY())
+
+	column IsCurrentYear
+		dataType: boolean
+		summarizeBy: none
+		expression: YEAR([Date]) = YEAR(TODAY())
+
+	partition Dim_Date = calculated
+		mode: import
+		source =
+				CALENDAR(DATE(2025,1,1), DATE(2027,12,31))
+
+	annotation PBI_Id = Dim_Date
+

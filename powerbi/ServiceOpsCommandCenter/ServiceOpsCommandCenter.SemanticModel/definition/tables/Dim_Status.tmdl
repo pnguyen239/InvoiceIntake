@@ -1,0 +1,44 @@
+table Dim_Status
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		isKey
+		sourceColumn: Status
+
+	column StatusOrder
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: StatusOrder
+
+	column StatusStage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: StatusStage
+
+	column StatusColorHex
+		dataType: string
+		summarizeBy: none
+		sourceColumn: StatusColorHex
+
+	partition Dim_Status = m
+		mode: import
+		source =
+				let
+				    Source = #table(
+				        {"Status", "StatusOrder", "StatusStage", "StatusColorHex"},
+				        {
+				            {"New", 1, "Open", "#8A8886"},
+				            {"Assigned", 2, "Open", "#0072CE"},
+				            {"In Progress", 3, "Open", "#00539B"},
+				            {"On Hold", 4, "Open", "#F2A900"},
+				            {"Completed", 5, "Closed", "#00A651"},
+				            {"Cancelled", 6, "Closed", "#DA291C"}
+				        }
+				    )
+				in
+				    Source
+
+	annotation PBI_Id = Dim_Status
+

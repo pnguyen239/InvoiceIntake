@@ -1,0 +1,16 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+
+annotation PBI_QueryOrder = ["Dim_Date", "Dim_Assignee", "Dim_RequestType", "Dim_Status", "Dim_Priority", "Fact_ServiceRequests", "Fact_StatusHistory"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table Dim_Date
+ref table Dim_Assignee
+ref table Dim_RequestType
+ref table Dim_Status
+ref table Dim_Priority
+ref table Fact_ServiceRequests
+ref table Fact_StatusHistory
