@@ -161,7 +161,7 @@ table Fact_ServiceRequests
 		summarizeBy: none
 		expression: IF(ISBLANK('Fact_ServiceRequests'[CompletedDateTime]), BLANK(), DATE(YEAR([CompletedDateTime]), MONTH([CompletedDateTime]), DAY([CompletedDateTime])))
 
-	column SLA Outcome
+	column 'SLA Outcome'
 		dataType: string
 		summarizeBy: none
 		expression: ```
